@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RouteX | Delivery Route Optimizer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">R</div><span>Route<span class="brand-accent">X</span></span></div>
+    <div class="side-label">WORKSPACE</div>
+    <a class="nav-item active" href="#"><span>◈</span> Route optimizer</a>
+    <a class="nav-item" href="#comparison"><span>▥</span> Algorithm analysis</a>
+    <div class="sidebar-bottom"><div class="status-dot"></div><div><b>Engine ready</b><small>Local optimization service</small></div></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar"><div class="crumb">Workspace <span>/</span> Route optimizer</div><div class="top-right"><span class="live-dot"></span> SYSTEM ONLINE <div class="avatar">RX</div></div></header>
+    <section class="hero">
+      <div><div class="eyebrow"><span></span> INTELLIGENT LOGISTICS PLATFORM</div>
+        <h1>Delivery Route <em>Optimizer</em></h1>
+        <p>Find the most efficient round trip. Configure your stops, compare algorithms, and optimize your delivery network.</p>
+      </div>
+      <div class="hero-icon">⌁</div>
+    </section>
+
+    <section class="stats">
+      <div class="stat-card"><div class="stat-icon blue">⌖</div><div><small>LOCATIONS</small><strong id="locationCount">6</strong><span>Delivery stops</span></div></div>
+      <div class="stat-card"><div class="stat-icon purple">⌘</div><div><small>ALGORITHMS</small><strong>03</strong><span>Optimization methods</span></div></div>
+      <div class="stat-card"><div class="stat-icon green">↗</div><div><small>OPTIMIZATION MODE</small><strong class="stat-word">TSP</strong><span>Round-trip routing</span></div></div>
+    </section>
+
+    <div class="content-grid">
+      <section class="panel setup-panel">
+        <div class="panel-heading"><div><div class="eyebrow">INPUT CONFIGURATION</div><h2>Delivery network</h2></div><button class="btn-ghost" id="resetBtn">↺ Reset sample</button></div>
+        <div class="field-heading"><div><b>Locations</b><small>First location is the warehouse / starting point.</small></div><button class="btn-outline" id="addBtn">＋ Add stop</button></div>
+        <div id="locations" class="locations"></div>
+        <div class="matrix-heading"><div><b>Distance matrix</b><small>Distances are in kilometres. Values are mirrored automatically.</small></div><span class="unit-pill">KM</span></div>
+        <div class="matrix-wrap"><table id="matrix"></table></div>
+        <div class="run-row"><div><b>Ready to optimize?</b><small>All three methods will be compared.</small></div><button class="btn-primary" id="optimizeBtn">Optimize route <span>→</span></button></div>
+        <div id="error" class="error hidden"></div>
+      </section>
+
+      <section class="panel result-panel">
+        <div class="panel-heading"><div><div class="eyebrow">OPTIMIZATION OUTPUT</div><h2>Best route</h2></div><span class="pill">LIVE RESULTS</span></div>
+        <div id="emptyState" class="empty-state"><div class="empty-art">⌁</div><h3>Your results will appear here</h3><p>Configure your delivery network and run the optimizer to see the best route and algorithm performance.</p></div>
+        <div id="results" class="hidden">
+          <div class="best-result"><small>SHORTEST DISTANCE FOUND</small><div><strong id="bestDistance">—</strong><span> km</span></div><p id="bestAlgorithm">—</p></div>
+          <div class="route-block"><div class="section-mini">OPTIMIZED ROUTE</div><div id="routeVisual" class="route-visual"></div></div>
+          <div class="result-list" id="resultList"></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel comparison-panel" id="comparison">
+      <div class="panel-heading"><div><div class="eyebrow">PERFORMANCE INSIGHTS</div><h2>Algorithm comparison</h2></div><span class="pill">EXECUTION TIME</span></div>
+      <div id="chartEmpty" class="chart-empty">Run an optimization to compare execution times.</div>
+      <div id="chart" class="chart hidden"></div>
+      <div class="complexity-grid">
+        <div><b>Brute Force</b><span>O(n!)</span><small>Exhaustive search</small></div>
+        <div><b>Held–Karp</b><span>O(n² × 2ⁿ)</span><small>Dynamic programming</small></div>
+        <div><b>Nearest Neighbour</b><span>O(n²)</span><small>Greedy approach</small></div>
+      </div>
+    </section>
+    <footer>RouteX <span>•</span> Delivery Route Optimizer <span>•</span> Travelling Salesperson Problem</footer>
+  </main>
+</div>
+<script src="script.js"></script>
+</body></html>
